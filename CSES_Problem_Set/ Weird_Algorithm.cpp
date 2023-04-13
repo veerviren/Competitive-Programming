@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+#define int long long
+#define endl '\n'
+#define pb push_back
+#define mp make_pair
+#define fi first
+#define se second
+#define all(X) (X).begin(), (X).end()
+#define allr(X) (X).rbegin(), (X).rend()
+#define sz(X) (int)X.size()
+#define setbits(X) __builtin_popcountll(X)
+#define fix(X) fixed << setprecision(X)
+#define mem0(X) memset((X), 0, sizeof((X)))
+#define mem1(X) memset((X), -1, sizeof((X)))
+ 
+void solve() {
+    int n;
+    cin>>n;
+    vector<int> v;
+    v.pb(n);
+    while (n>1)
+    {
+        if(n%2==0)
+        {
+            n/=2;
+            v.pb(n);
+        }
+        else
+        {
+            n=n*3+1;
+            v.pb(n);
+        }
+    }
+ 
+    for (int i = 0; i < v.size(); ++i) {
+        cout<<v[i]<<" ";
+    }
+}
+ 
+int32_t main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+ 
+    int t = 1;
+    //    cin >> t;
+    while (t--) solve();
+    return 0;
+}

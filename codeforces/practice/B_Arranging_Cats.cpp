@@ -5,6 +5,7 @@ Nothing is impossible, as you believe you can do it
 You can do it!!!
 -------------------------------------------------------*/
 #include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 #define int long long
@@ -53,15 +54,40 @@ int lcm(int a, int b) {
 }
 
 void solve() {
-    string s = "codeforces";
-    string s1;
-    cin >> s1;
+    int n;
+    cin >> n;
+
+    string s, f;
+    cin >> s >> f;
+
     int ans = 0;
-    for(int i = 0; i < 10; i++)
+    int ct = 0;
+    for(int i = 0; i < n; i++)
     {
-        if(s1[i] != s[i]) ans++;
+        if(s[i] == '0' && f[i] == '1')
+        {
+            ans++;
+            
+        }
+
+        if(s[i] == '1' && f[i] == '0')
+        {
+            ct++;
+        }
     }
-    cout << ans << endl;
+
+    // cout << ans << " " << ct << endl;
+
+    if(ct >= ans)
+    {
+        ct -= ans;
+    }
+    else{
+        ct = 0;
+    }
+
+    cout << ans + ct<< endl;
+
 }
 
 int32_t main() {

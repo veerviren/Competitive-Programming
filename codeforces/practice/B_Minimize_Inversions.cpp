@@ -5,6 +5,8 @@ Nothing is impossible, as you believe you can do it
 You can do it!!!
 -------------------------------------------------------*/
 #include <bits/stdc++.h>
+#include <iostream>
+#include <map>
 using namespace std;
 
 #define int long long
@@ -56,23 +58,30 @@ void solve() {
     int n;
     cin >> n;
 
-    int sum = 0;
+    vector<int> a(n), b(n);
+    input(a, n);
+    input(b, n);
 
-    for(int i = 0; i < n; i++) {
-        int x;
-        cin >> x;
-        sum += x;
+    vector<pair<int, int> > v;
+
+    for(int i = 0; i < n; i++)
+    {
+        v.pb({a[i], b[i]});
     }
 
-    float avg = (float)sum / n;
+    sort(all(v));
 
-    if(avg == 1) {
-        cout << 0 << endl;
-    } else if(avg > 1) {
-        cout << sum - n << endl;
-    } else {
-        cout << 1 << endl;
+    for(auto &it : v)
+    {
+        cout << it.fi << " ";
     }
+    cout << endl;
+
+    for(auto &it : v)
+    {
+        cout << it.se << " ";
+    }
+    cout << endl;
 }
 
 int32_t main() {

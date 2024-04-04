@@ -1,4 +1,5 @@
 .cph
 main.cpp
 .vscode
+.DS_Store
 output

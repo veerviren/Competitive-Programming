@@ -91,48 +91,45 @@ int lcm(int a, int b)
 
 void Jay_Shree_Krishna()
 {
-    int n;
-    cin >> n;
+    string s;
+    cin >> s;
 
-    vector<int> v(n);
-    cin >> v;
-
-    int st = 1;
-    int ed = n;
-    while (st <= ed)
+    int n = sz(s);
+    int i = 0;
+    int j = 0;
+    map<int, int> mp;
+    int ans = 1e9;
+    while (j < n)
     {
-        int mid = st + (ed - st) / 2;
-        bool ok = 0;
-        int curOr = 0;
-        cout << "mid " << mid << endl;
-        for (int i = 0; i < mid; i++)
+        mp[s[j]]++;
+        while (i <= j)
         {
-            curOr |= v[i];
-        }
-        cout << "curOr " << curOr << endl;
-        int newCurOr = curOr;
-        for (int i = mid; i < n; i++)
-        {
-            newCurOr = 0;
-            for (int j = i - mid + 1; j <= i; j++)
+            if (mp['1'] && mp['2'] && mp['3'])
             {
-                newCurOr |= v[j];
+                ans = min(ans, j - i + 1);
+                mp[s[i]]--;
+                if (mp[s[i]] == 0)
+                {
+                    mp.erase(s[i]);
+                }
+                i++;
             }
-            cout << "newCurOr " << newCurOr << endl;
-
-            if (newCurOr != curOr)
+            else
             {
-                ok = 1;
                 break;
             }
         }
-        cout << endl;
-        if (ok)
-        {
-            ed = mid - 1;
-        }
+        j++;
     }
-    cout << ed << endl;
+    // cout << "ans " << ans << endl;
+    if (ans == 1e9)
+    {
+        cout << 0 << endl;
+    }
+    else
+    {
+        cout << ans << endl;
+    }
 }
 
 int32_t main()

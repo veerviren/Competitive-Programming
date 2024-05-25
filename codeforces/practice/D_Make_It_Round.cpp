@@ -74,11 +74,43 @@ int lcm(int a, int b) {
 }
 
 void Jay_Shree_Krishna() {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
+    int n, m;
+    cin >> n >> m;
+
+    int ans = n;
+    int k = 1;
+    while((n % 10) == 0)
+    {
+        n /= 10;
+    }
+
+    while((n % 5) == 0)
+    {
+        n /= 5;
+        if((k * 2) <= m)
+        {
+            k *= 2;
+        }
+        else break;
+    }
     
+    while((n % 2) == 0)
+    {
+        n /= 2;
+        if((k * 5) <= m)
+        {
+            k *= 5;
+        }
+        else break;
+    }
+
+    while((k * 10) <= m)
+    {
+        k *= 10;
+    }
+
+    k = (m / k) * k;
+    cout << ans * k << endl;
 }
 
 int32_t main() {

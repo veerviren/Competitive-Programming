@@ -73,68 +73,32 @@ int lcm(int a, int b) {
     return (a / gcd(a, b)) * b;
 }
 
-void rotate(vector<string> &v)
-{   
-    int n = v.size();
-    vector<string> temp = v;
-
-    for(int i = 0; i < n; i++)
-    {
-        for(int j = 0; j < n; j++)
-        {
-            temp[i][j] = v[n - j - 1][i];
-        }
-    }
-
-    v = temp;
-    cout << "after rotate" << endl;
-    for(auto &x:v)
-    {
-        cout << x << endl;
-    }
-    cout << endl;
-}
-
-bool isMirror(vector<vector<int>> &copy, vector<vector<int>> &v)
-{
-    
-}
-
 void Jay_Shree_Krishna() {
-    int n;
-    cin >> n;
+    int x, y;
+    cin >> x >> y;
 
-    vector<string> v(n), copy;
+    int ct = 0;
+    int extra = 0;
+    while(y >= 2)
+    {
+        ct++;
+        y-=2;
+        extra += 7;
+    }
 
-    for(int i = 0; i < n; i++)
+    if(y)
     {
-        cin >> v[i];
+        ct++;
+        extra += 11;
     }
-    // for(auto &x:v)
-    // {
-    //     cout << x << endl;
-    // }
-    // cout << endl;
-    copy = v;
-    for(auto &x:copy)
+
+    if(extra >= x)
     {
-        cout << x << endl;
+        cout << ct << endl;
     }
-    cout << endl;
-    int ans = 0;
-    cout << "90" << endl;
-    rotate(v);
-    cout << "180" << endl;
-    rotate(v);
-    cout << "270" << endl;
-    rotate(v);
-    cout << "360" << endl;
-    rotate(v);
-    // while(!isMirror(copy, v))
-    // {
-    //     ans++;
-    //     rotate(v);
-    // }
+    else{
+        cout << ct + ceil((x - extra) / (float)15) << endl;
+    }
 }
 
 int32_t main() {

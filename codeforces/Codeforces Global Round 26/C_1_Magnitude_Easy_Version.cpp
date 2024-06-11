@@ -74,10 +74,31 @@ int lcm(int a, int b) {
 }
 
 void Jay_Shree_Krishna() {
-    int n, m, k;
-    cin >> n >> m >> k;
+    int n;
+    cin >> n;
 
-    
+    vector<int> v(n);
+    cin >> v;
+
+    vector<int> pre;
+    pre = v;
+
+    for(int i = 1; i < n; i++)
+    {
+        pre[i] += pre[i - 1];
+    }
+
+    int ans = abs(pre[n - 1]);
+
+    for(int i = 0; i < n - 1; i++)
+    {
+        int sum1 = abs(pre[i]);
+        int sum2 = pre[n - 1];
+        sum2 -= pre[i];
+        
+        ans = max(ans, sum1 + sum2);
+    }
+    cout << ans << endl;
 }
 
 int32_t main() {
@@ -86,7 +107,7 @@ int32_t main() {
     cout.tie(0);
 
     int t = 1;
-// 	cin >> t;
+	cin >> t;
     while (t--) Jay_Shree_Krishna();
     return 0;
 }
